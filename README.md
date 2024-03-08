@@ -9,20 +9,20 @@ Docker для быстрой развертки wordpress сайта.
 * Клонирование данного репозитория и удаляем все лишнее (одна команда):
 
 ```shell script
-git clone https://github.com/wpdew-com/wp_fast_start_docker .; rd .gitignore; rd readme.md; rm -r -fo .git
+git clone https://github.com/wpdew/wpdew_fast_start_docker .; rd .gitignore; rd readme.md; rm -r -fo .git
 ```
 
 * или в любое место на вашем компьютере. 
 
 ```shell script
-git clone https://github.com/wpdew-com/wp_fast_start_docker
+git clone https://github.com/wpdew/wpdew_fast_start_docker
 ```
 
 Перейдите в директорию, в которую вы клонировали репозиторий. Все дальнейшие команды следует выполнять именно в этой директории.
 
 * или команда для текущего каталога
 ```shell script
-git clone https://github.com/wpdew-com/wp_fast_start_docker .
+git clone https://github.com/wpdew/wpdew_fast_start_docker .
 ```
 
 **2**. Создайте контейнеры и запустите их.
