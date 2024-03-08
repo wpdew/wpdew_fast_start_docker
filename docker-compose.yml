@@ -1,0 +1,54 @@
+# Docker Compose
+# https://docs.docker.com/compose/
+version: "3.9"
+
+services:
+
+  wordpress:
+    image: wordpress
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: MYSQL_USER
+      WORDPRESS_DB_PASSWORD: MYSQL_PASSWORD
+      WORDPRESS_DB_NAME: MYSQL_DATABASE
+    restart: always 
+    volumes:
+      - ./.srv/wordpress/:/var/www/html
+      - ./theme/:/var/www/html/wp-content/themes/
+      - ./plugin/:/var/www/html/wp-content/plugins/
+      - ./uploads/:/var/www/html/wp-content/uploads/
+      - ./.srv/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      #- wordpress:/var/www/html
+    ports:
+      - 8080:80
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: mysql
+    environment:
+      MYSQL_DATABASE: MYSQL_DATABASE
+      MYSQL_USER: MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+      MYSQL_RANDOM_ROOT_PASSWORD: MYSQL_RANDOM_ROOT_PASSWORD
+    restart: always
+    volumes:
+      - ./my-data:/var/lib/mysql
+    ports:
+      - 9906:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+    restart: always 
+    ports:
+      - '8081:80' 
+    depends_on:
+      - db
+
+
+volumes:
+  wordpress:
+  db:
