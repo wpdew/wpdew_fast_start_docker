@@ -30,7 +30,7 @@ git clone https://github.com/wpdew/wpdew_fast_start_docker .
 * Выполните команду для старта проэкта:
 
 ```shell script
-docker-compose build
+make up
 ```
 
 Создание контейнеров займёт некоторое время. Дождитесь окончания процесса. Ваш компьютер не должен во время данного процесса потерять доступ в интернет.  
@@ -38,10 +38,16 @@ docker-compose build
 
 * Запуск контейнера для работы
 ```shell script
-docker-compose up -d
+make up
 ```
 * Остановка контейнера
 ```shell script
-docker-compose down
+make stop
+```
+
+* Перезапуск контейнера
+```shell script
+make restart
 ```
 * Доступ к сайту по адресу [http://localhost:8080](http://localhost:8080)
+* Доступ к phpmyadmin по адресу [http://localhost:8081](http://localhost:8081)
